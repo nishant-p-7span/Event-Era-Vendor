@@ -15,7 +15,7 @@ const Bookings = () => {
       try {
         // Adjust the URL to match your API endpoint
         const response = await axios.get(
-          "http://localhost:5000/api/bookings/event/" + id
+          "https://api.theeventera.live/api/bookings/event/" + id
         );
         setUsers(response.data); // Store the users in state
         console.log(response.data);
@@ -32,7 +32,7 @@ const Bookings = () => {
       try {
         // Adjust the URL to match your API endpoint
         const response = await axios.get(
-          "http://localhost:5000/api/bookings/event/" + id
+          "https://api.theeventera.live/api/bookings/event/" + id
         );
         setTickets(response.data.length); // Store the users in state
         const totalRevenue = response.data.reduce((total, item) => {
@@ -54,7 +54,7 @@ const Bookings = () => {
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:5000/api/events/details/" + id)
+        .get("https://api.theeventera.live/api/events/details/" + id)
         .then((response) => {
           console.log(response.data);
           setSeats(response.data.number_of_seats);
@@ -92,35 +92,16 @@ const Bookings = () => {
     <div>
       <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 mb-8">
         {cards.map((card) => (
-          <div
-            key={card.name}
-            className="overflow-hidden rounded-lg bg-white shadow"
-          >
-            <div>
-              <div className="p-5">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    {/* <card.icon
-                    className="h-6 w-6 text-gray-400"
-                    aria-hidden="true"
-                  /> */}
-                  </div>
-                  <div className="ml-5 w-0 flex-1">
-                    <dl>
-                      <dt className="truncate text-sm font-medium text-gray-500">
-                        {card.name}
-                      </dt>
-                      <dd>
-                        <div className="text-lg font-medium text-gray-900">
-                          {card.amount}
-                        </div>
-                      </dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+         <div
+         key={card.name}
+         className="overflow-hidden rounded-lg bg-white shadow"
+       >
+        <div className="bg-red-500 text-white rounded-lg p-4 flex flex-col items-center justify-center">
+       <h2 className="text-xl font-semibold">{card.name}</h2>
+       <p className="text-4xl font-bold">{card.amount}</p>
+     </div>
+
+       </div>
         ))}
       </div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

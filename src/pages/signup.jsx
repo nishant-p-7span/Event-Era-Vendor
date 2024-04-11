@@ -13,7 +13,7 @@ const SignupPage = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await axios.post("https://api.theeventera.live/api/auth/register", {
         user_name,
         user_email: email,
         user_password: password,
